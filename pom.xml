@@ -9,8 +9,9 @@
 		<relativePath/>
 	</parent>
 	<groupId>dev.projeto</groupId>
-	<artifactId>mensal</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>backend</artifactId>
+	<version>1</version>
+	<packaging>war</packaging>
 	<name>mensal</name>
 	<description>Projeto mensal faculdade</description>
 	<url/>
