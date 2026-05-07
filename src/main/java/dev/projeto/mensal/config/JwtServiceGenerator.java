@@ -28,7 +28,7 @@ public class JwtServiceGenerator {
 	public Map<String, Object> gerarPayload(Usuario usuario){
 		
 		Map<String, Object> payloadData = new HashMap<>();
-		payloadData.put("name", usuario.getNome());
+		payloadData.put("name", usuario.getUsername());
 		payloadData.put("username", usuario.getUsername());
 		payloadData.put("email", usuario.getEmail());
 		payloadData.put("role", usuario.getRole());
