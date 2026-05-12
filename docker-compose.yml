@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Se você estiver subindo o Keycloak aqui mesmo, você pode descomentar o bloco abaixo
+  # keycloak:
+  #   image: quay.io/keycloak/keycloak:latest
+  #   environment:
+  #     - KEYCLOAK_ADMIN=admin
+  #     - KEYCLOAK_ADMIN_PASSWORD=admin
+  #   command: start-dev
+  #   ports:
+  #     - "5001:8080"
+
+  backend:
+    build: .
+    container_name: backend-mensal
+    ports:
+      - "8443:8443"
+    environment:
+      # URL do banco de dados (ajuste se o banco for interno na VM ou em outro container)
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database.dua.dev.br:3306/mensal
+      - SPRING_DATASOURCE_USERNAME=debora
+      - SPRING_DATASOURCE_PASSWORD=debora
+      
+      # URL do Keycloak (se o Keycloak estiver rodando na mesma VM, você precisará usar o IP interno ou o nome do container)
+      # Exemplo: http://IP_DA_SUA_VM:5001/realms/bia-mensal
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://localhost:5001/realms/bia-mensal
+      
+      # URL do painel admin do Keycloak para criar usuários no AuthController
+      - KEYCLOAK_ADMIN_URL=http://localhost:5001
+      
+    # Se o banco de dados rodar no mesmo docker-compose, adicione-o aqui
+    # depends_on:
+    #   - db
+    #   - keycloak

@@ -24,7 +24,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://frontend.dua.dev.br")
 public class AuthController {
 
     private final UsuarioService usuarioService;
