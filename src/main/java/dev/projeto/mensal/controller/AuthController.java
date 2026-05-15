@@ -137,7 +137,7 @@ public class AuthController {
         ResponseEntity<Void> keycloakResponse;
         try {
             keycloakResponse = restTemplate.postForEntity(
-                    "http://localhost:5001/admin/realms/bia-mensal/users",
+                    "http://10.35.228.150:5001/admin/realms/bia-mensal/users",
                     new HttpEntity<>(keycloakUser, headersKeycloak), Void.class
             );
         } catch (HttpClientErrorException e) {
